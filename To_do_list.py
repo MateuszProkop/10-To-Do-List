@@ -1,8 +1,7 @@
 user_choice = -1
 
 tasks = []
-tasks.append("Wynieść śmieci")
-tasks.append("Powiesić pranie")
+
 
 def show_tasks():
     task_index = 0
@@ -31,6 +30,18 @@ def save_tasks_to_file():
         file.write(task + "\n")
     file.close()
 
+def load_tasks_from_file():
+    try:  
+        file = open("tasks.txt")
+
+        for line in file.readlines():
+            tasks.append(line.strip())
+
+        file.close()
+    except FileNotFoundError:
+        return
+
+load_tasks_from_file()
 
 while user_choice != 5:
     if user_choice == 1:
